@@ -15,6 +15,8 @@ services:
   backend:
     image: altaski/kittygram_final_backend
     env_file: .env
+    depends_on:
+      - db
     volumes:
       - static:/backend_static
       - media:/app/media
@@ -22,15 +24,18 @@ services:
   frontend:
     image: altaski/kittygram_final_frontend
     env_file: .env
-    command: cp -r /app/build/. /static/
+    command: cp -r /app/build/. /frontend_static/
     volumes:
       - static:/frontend_static
 
   gateway:
     image: altaski/kittygram_final_gateway
     env_file: .env
+    depends_on:
+      - backend
+      - frontend
     ports:
       - 9000:80
     volumes:
-      - static:/static/
-      - media:/app/media
+      - static:/static
+      - media:/media
