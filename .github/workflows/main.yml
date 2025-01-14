@@ -43,7 +43,7 @@ jobs:
         python manage.py test
   build_and_push_to_docker_hub:
     name: Push Docker image to DockerHub
-    if: github.ref == 'refs/heads/main'
+    #if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: tests
     steps:
@@ -120,7 +120,7 @@ jobs:
           push: true
           tags: {{ secrets.DOCKER_NICKNAME }}/kittygram_final_gateway:latest
   deploy:
-    if: github.ref == 'refs/heads/main'
+    #if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     needs: 
       - build_and_push_to_docker_hub
