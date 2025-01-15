@@ -1,5 +1,5 @@
 [![Main Kittygram workflow](https://github.com/alizunova/kittygram_final/actions/workflows/main.yml/badge.svg)](https://github.com/alizunova/kittygram_final/actions/workflows/main.yml)
-# Проект: Kittygram: управление котиками
+# Kittygram: управление котиками
 ### Учебный проект Яндекс.Практикум курса Python-разработчик(backend)
 
 Kittygram - сервис для любителей котиков.
