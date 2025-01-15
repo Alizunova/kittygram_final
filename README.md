@@ -1,11 +1,11 @@
 [![Main Kittygram workflow](https://github.com/alizunova/kittygram_final/actions/workflows/main.yml/badge.svg)](https://github.com/alizunova/kittygram_final/actions/workflows/main.yml)
-# Проект: Kittygram
-### Учебный проект *Яндекс.Практикум* курса Python-разработчик(backend)
+# Проект: Kittygram: управление котиками
+### Учебный проект Яндекс.Практикум курса Python-разработчик(backend)
 
-Проект Kittygram Фпредназначен для публикации фото котиков и только котиков, никаких собак.
+Kittygram - сервис для любителей котиков.
+Можно добавлять фото котиков, их имена, год рождения, цвет и достижения, просматривать чужих котиков.
 
-
-## Технологии
+## *Технологии*
 
 ![Django](https://img.shields.io/badge/Django-092E20?logo=django&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?logo=postgresql&logoColor=white)
@@ -15,7 +15,7 @@
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)
 
 
-## Запуск проекта на удаленном сервере
+## *Запуск проекта на удаленном сервере*
 
 1. Установить docker compose на сервер:
 ```bash
@@ -63,5 +63,5 @@ sudo docker compose -f docker-compose.production.yml exec backend python manage.
 sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/collected_static/. /backend_static/static/
 ```
 
-## Автор
+## *Автор*
 [**Анна Лизунова**](https://github.com/alizunova)
