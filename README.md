@@ -65,3 +65,4 @@ sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/col
 
 ## *Автор*
 [<span style='color: red;'>**Анна Лизунова**</span>](https://github.com/alizunova)
+<span style='color: red;'>long</span>
