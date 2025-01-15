@@ -38,14 +38,14 @@ sudo apt-get install docker-compose-plugin
 
 3. На сервере в директории с файлом **docker-compose.production.yml** создать файл  **.env**:
 ``` bash    
-POSTGRES_DB=имя базы
+ALLOWED_HOSTS=разрешенные хосты(your.domain.com)
+DEBUG=True/False
+SECRET_KEY = ключ приложения django
 POSTGRES_USER=владелец базы
 POSTGRES_PASSWORD=пароль базы
+POSTGRES_DB=имя базы
 DB_HOST=db
 DB_PORT=5432
-SECRET_KEY=ключ приложения django
-DEBUG=True/False
-ALLOWED_HOSTS=разрешенные хосты(your.domain.com)
 ```        
 4. Запустить Docker compose:
 ``` bash
