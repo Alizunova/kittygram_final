@@ -1,26 +1,67 @@
-#  Как работать с репозиторием финального задания
+[![Main Kittygram workflow](https://github.com/alizunova/kittygram_final/actions/workflows/main.yml/badge.svg)](https://github.com/alizunova/kittygram_final/actions/workflows/main.yml)
+# Проект: Kittygram
+### Учебный проект *Яндекс.Практикум* курса Python-разработчик(backend)
 
-## Что нужно сделать
+Проект Kittygram Фпредназначен для публикации фото котиков и только котиков, никаких собак.
 
-Настроить запуск проекта Kittygram в контейнерах и CI/CD с помощью GitHub Actions
 
-## Как проверить работу с помощью автотестов
+## Технологии
 
-В корне репозитория создайте файл tests.yml со следующим содержимым:
-```yaml
-repo_owner: ваш_логин_на_гитхабе
-kittygram_domain: полная ссылка (https://доменное_имя) на ваш проект Kittygram
-taski_domain: полная ссылка (https://доменное_имя) на ваш проект Taski
-dockerhub_username: ваш_логин_на_докерхабе
+![Django](https://img.shields.io/badge/Django-092E20?logo=django&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?logo=postgresql&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black)
+![Nginx](https://img.shields.io/badge/Nginx-009639?logo=nginx&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?logo=github-actions&logoColor=white)
+
+
+## Запуск проекта на удаленном сервере
+
+1. Установить docker compose на сервер:
+```bash
+sudo apt update
+```
+```bash
+sudo apt install curl
+```
+```bash
+curl -fSL https://get.docker.com -o get-docker.sh
+```
+```bash
+sudo sh ./get-docker.sh
+```
+```bash    
+sudo apt-get install docker-compose-plugin
 ```
 
-Скопируйте содержимое файла `.github/workflows/main.yml` в файл `kittygram_workflow.yml` в корневой директории проекта.
+2. Скачать файл [docker-compose.production.yml](https://github.com/alizunova/kittygram_final/blob/main/docker-compose.production.yml) на свой сервер.
 
-Для локального запуска тестов создайте виртуальное окружение, установите в него зависимости из backend/requirements.txt и запустите в корневой директории проекта `pytest`.
+3. На сервере в директории с файлом **docker-compose.production.yml** создать файл  **.env**:
+``` bash    
+POSTGRES_DB=имя базы
+POSTGRES_USER=владелец базы
+POSTGRES_PASSWORD=пароль базы
+DB_HOST=db
+DB_PORT=5432
+SECRET_KEY=ключ приложения django
+DEBUG=True/False
+ALLOWED_HOSTS=разрешенные хосты(your.domain.com)
+```        
+4. Запустить Docker compose:
+``` bash
+sudo docker compose -f docker-compose.production.yml up -d
+```
 
-## Чек-лист для проверки перед отправкой задания
+5. Собрать статику и применить миграции
+``` bash
+sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate
+```
+``` bash
+sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic
+```
+``` bash
+sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/collected_static/. /backend_static/static/
+```
 
-- Проект Taski доступен по доменному имени, указанному в `tests.yml`.
-- Проект Kittygram доступен по доменному имени, указанному в `tests.yml`.
-- Пуш в ветку main запускает тестирование и деплой Kittygram, а после успешного деплоя вам приходит сообщение в телеграм.
-- В корне проекта есть файл `kittygram_workflow.yml`.
+## Автор
+[**Анна Лизунова**](https://github.com/alizunova)
