@@ -63,5 +63,5 @@ sudo docker compose -f docker-compose.production.yml exec backend python manage.
 sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/collected_static/. /backend_static/static/
 ```
 
-# *Автор*
+### *Автор*
 [**Анна Лизунова**](https://github.com/alizunova)
